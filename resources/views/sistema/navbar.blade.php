@@ -13,10 +13,10 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">Tarefas</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown10">
-                <a class="dropdown-item" href="">Cadastrar Tarefa</a>
-                <a class="dropdown-item" href="">Listar Tarefas pendentes</a>
-                <a class="dropdown-item" href="">Listar Tarefas Realizadas</a>
-                <a class="dropdown-item" href="">Pesquisar Tarefas</a>
+                <a class="dropdown-item" href="{{ route('novaTarefa')}}">Cadastrar Tarefa</a>
+                <a class="dropdown-item" href="{{ route('tarefasPendentes')}}">Listar Tarefas pendentes</a>
+                <a class="dropdown-item" href="{{ route('tarefasConcluidas')}}">Listar Tarefas Realizadas</a>
+                <a class="dropdown-item" href="{{ route('pesquisarTarefa')}}">Pesquisar Tarefas</a>
                 </div>
             </li>
             <li class="nav-link dropdown">
