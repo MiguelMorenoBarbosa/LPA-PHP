@@ -1,4 +1,4 @@
-@extends('sistema.layout')
+ b                                                  @extends('sistema.layout')
 @section('title', 'Sistema Tarefas - Tarefas')
 @section('content')
     <div class="card border">

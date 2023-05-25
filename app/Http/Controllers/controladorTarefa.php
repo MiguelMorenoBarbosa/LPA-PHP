@@ -4,30 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tipo;
-use App\Models\Tarefa;
+use App\Models\Adocao;
 use Illuminate\Support\Facades\DB;
 
-class controladorTarefa extends Controller
+class controladorAdocao extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    private $tarefas;
+    private $Adocao;
     private $total = 5;
-    public function __construct(Tarefa $tarefa)
+    public function __construct(Adocao $Adocao)
     {
         $this->middleware('auth');
-        $this->tarefas = $tarefa;
+        $this->Adocao = $Adocao;
     }
-    public function listarTarefasPendentes()
+    public function listarAdocaoPendentes()
     {
-        $dados = $this->tarefas->with('tipo')->where('status', '=', 'N')->paginate($this->total);
-        return view('sistema.tarefas', compact('dados'));
+        $dados = $this->Adocao->with('tipo')->where('status', '=', 'N')->paginate($this->total);
+        return view('sistema.Adocao', compact('dados'));
     }
-    public function listarTarefasConcluidas()
+    public function listarAdocaoConcluidas()
     {
-        $dados = $this->tarefas->with('tipo')->where('status', '=', 'S')->paginate($this->total);
-        return view('sistema.tarefas', compact('dados'));
+        $dados = $this->Adocao->with('tipo')->where('status', '=', 'S')->paginate($this->total);
+        return view('sistema.Adocao', compact('dados'));
     }
 
     /**
@@ -36,7 +36,7 @@ class controladorTarefa extends Controller
     public function create()
     {
         $tipos = Tipo::all();
-        return view('sistema.novaTarefa', compact('tipos'));
+        return view('sistema.novaAdocao', compact('tipos'));
     }
 
     /**
@@ -44,12 +44,12 @@ class controladorTarefa extends Controller
      */
     public function store(Request $request)
     {
-        $dados = new Tarefa();
-        $dados->descricaoTarefa = $request->input('descricaoTarefa');
+        $dados = new Adocao();
+        $dados->descricaoAdocao = $request->input('descricaoAdocao');
         $dados->status = $request->input('status');
         $dados->tipo_id = $request->input('tipo');
         $dados->save();
-        return redirect('\tarefasPendentes')->with('success', 'Nova tarefa cadastrada com sucesso.');
+        return redirect('\AdocaoPendentes')->with('success', 'Nova Adoção cadastrada com sucesso.');
     }
 
     /**
@@ -65,13 +65,13 @@ class controladorTarefa extends Controller
      */
     public function edit(string $id)
     {
-        $dados = Tarefa::find($id);
+        $dados = Adocao::find($id);
         if(isset($dados)){
             $tipos = Tipo::all();
             $dados->tipos = $tipos;
-            return view('sistema.editarTarefa', compact('dados'));
+            return view('sistema.editarAdocao', compact('dados'));
         }
-        return redirect('\tarefasPendentes')->with('danger', 'Traefa não encontrada.');
+        return redirect('\AdocaoPendentes')->with('danger', 'Adoção não encontrada.');
     }
 
     /**
@@ -79,17 +79,17 @@ class controladorTarefa extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $dados = Tarefa::find($id);
+        $dados = Adocao::find($id);
         if(isset($dados)){
-            $dados = new Tarefa();
-            $dados->descricaoTarefa = $request->input('descricaoTarefa');
+            $dados = new Adocao();
+            $dados->descricaoAdocao = $request->input('descricaoAdocao');
             $dados->status = $request->input('status');
             $dados->tipo_id = $request->input('tipo');
             $dados->save();
         }else{
-            return redirect('/tarefasPendentes')->with('danger', 'Erro ao tentar atualizar o cadastro. ');
+            return redirect('/AdocaoPendentes')->with('danger', 'Erro ao tentar atualizar o cadastro. ');
         }
-        return redirect('/tarefasPendentes')->with('success', 'Cadastro atualizado com sucesso.');
+        return redirect('/AdocaoPendentes')->with('success', 'Cadastro atualizado com sucesso.');
 
     }
 
@@ -98,35 +98,35 @@ class controladorTarefa extends Controller
      */
     public function destroy(string $id)
     {
-        $dados = Tarefa::find($id);
+        $dados = Adocao::find($id);
         if (isset($dados)){
             $dados->delete();
         }else{
-            return redirect('/tarefasPendentes')->with('danger', 'Tarefa não encontrada. ');
+            return redirect('/AdocaoPendentes')->with('danger', 'Adoção não encontrada. ');
         }
-        return redirect('/tarefasPendentes')->with('success', 'Cadastro excluído com sucesso.');
+        return redirect('/AdocaoPendentes')->with('success', 'Cadastro excluído com sucesso.');
         }
 
-    public function pesquisarTarefa()
+    public function pesquisarAdocao()
     {
-        return view('sistema.pesquisarTarefa');
+        return view('sistema.pesquisarAdocao');
     }
 
-    public function procurarTarefa(Request $request)
+    public function procurarAdocao(Request $request)
     {
-        $descricao = $request->input('descricaoTarefa');
-        $dados = DB::table('tarefas')->select('id', 'descricaoTarefa', 'status', 'tipo_id')
-                                     ->where(DB::raw('lower(descricaoTarefa)'), 'like', '%'.
+        $descricao = $request->input('descricaoAdocao');
+        $dados = DB::table('Adocao')->select('id', 'descricaoAdocao', 'status', 'tipo_id')
+                                     ->where(DB::raw('lower(descricaoAdocao)'), 'like', '%'.
                                      strtolower($descricao).'%')->get();
         if(isset($dados)){
             foreach($dados as $item){
                 $tipo = Tipo::find($item->tipo_id);
                 $item->descricaoTipo = $tipo->descicaoTipo;
             }
-            return view('sistema.exibirPesquisaTarefas', compact('dados'));
+            return view('sistema.exibirPesquisaAdocao', compact('dados'));
         }
         else 
-            return redirect('/tarefasPendentes')
+            return redirect('/AdocaoPendentes')
             ->with('danger', 'Não foram encontrados registros com o termo pesquisado.');
     }
     }
