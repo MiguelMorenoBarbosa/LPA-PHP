@@ -1,5 +1,5 @@
- b                                                  @extends('sistema.layout')
-@section('title', 'Sistema Tarefas - Tarefas')
+@extends('sistema.layout')
+@section('title', 'Sistema Adoção - Adoção')
 @section('content')
     <div class="card border">
         @if(session()->get('danger'))
@@ -12,12 +12,12 @@
              </div><br />
         @endif 
         <div class="card-body">
-            <h5 class="card-title" style="text-align: center">Cadastro de Tarefas</h5>
+            <h5 class="card-title" style="text-align: center">Cadastro de Adoção</h5>
                 <table class="table table-ordered table-hover" id="tabelaTipos">
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Descrição da Tarefa</th>
+                            <th>Descrição da Adoção</th>
                             <th>Status</th>
                             <th>Tipo</th>
                             <th style="text-align:center" colspan="2">Ações</th>
@@ -27,7 +27,7 @@
                         @foreach ($dados as $item => $value)
                         <tr>
                             <td>{{$value['id'] }}</td>
-                            <td>{{$value['descicaoTarefa'] }}</td>
+                            <td>{{$value['descicaoAdocao'] }}</td>
                             @if($value['status'] == 'N')
                                 <td>Pendente</td>
                             @else
@@ -35,10 +35,10 @@
                             @endif
                             <td>{{$value['tipo']['descicaoTipo']}}</td>
                             <td style="text-align:center">
-                                <a href="/tarefas/editar/{{ $value['id'] }}" class="btn btn-primary">Editar</a>
+                                <a href="/adocoes/editar/{{ $value['id'] }}" class="btn btn-primary">Editar</a>
                             </td>
                             <td style="text-align:center">
-                                <a href="/tarefas/apagar/{{ $value['id'] }}" class="btn btn-danger">Deletar</a>
+                                <a href="/adocoes/apagar/{{ $value['id'] }}" class="btn btn-danger">Deletar</a>
                             </td>
                         </tr>
                         @endforeach
@@ -50,7 +50,7 @@
                 </div>
         </div>
         <div class="card-footer">
-            <a href="/tarefas/novo" class="btn btn-primary btn-sm" role="button">Novo Cadastro</a>
+            <a href="/adocoes/novo" class="btn btn-primary btn-sm" role="button">Novo Cadastro</a>
         </div>
     </div>
 @endsection

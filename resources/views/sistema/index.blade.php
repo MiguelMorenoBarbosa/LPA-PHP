@@ -1,8 +1,8 @@
 @extends('sistema.layout')
-@section('title', 'Página Inicial - Sistema Tarefas')
+@section('title', 'Página Inicial - Sistema Adoções')
 @section('content')
 <div class="jumbtron">
-    <p class="h3 text-center py-4">Cadastro de Tarefas</p>
+    <p class="h3 text-center py-4">Cadastro de Adoções</p>
 </div>
 <div class="row">
     <div class="col-md-6 col-sm-4 imgCapa">

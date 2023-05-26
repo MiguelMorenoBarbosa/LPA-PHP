@@ -30,13 +30,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-/*Route::get('/tarefasPendentes', [App/Http/Controllers/controladorTarefa::class, 'listarTarefasPendentes'])->name('tarefasPendentes');
-Route::get('/tarefasConcluidas', [App/Http/Controllers/controladorTarefa::class, 'listarTarefasConcluidas'])->name('tarefasConcluidas');
-Route::get('/tarefas/novo', [App/Http/Controllers/controladorTarefa::class, 'create'])->name('novaTarefa');
-Route::get('/tarefas', [App/Http/Controllers/controladorTarefa::class, 'store'])->name('gravarNovaTarefa');
-Route::get('tarefas/apagar/{id}', [App/Http/Controllers/controladorTarefa::class, 'destroy'])->name('deletarTarefa');
-Route::get('tarefas/editar/{id}', [App/Http/Controllers/controladorTarefa::class, 'edit'])->name('editaTarefa');
-Route::get('tarefas/{id}', [App/Http/Controllers/controladorTarefa::class, 'update'])->name('atualizaTarefa');
-Route::get('tarefas/pesquisa', [App/Http/Controllers/controladorTarefa::class, 'pesquisarTarefa'])->name('pesquisarTarefa');
-Route::get('tarefas/procurarTarefa', [App/Http/Controllers/controladorTarefa::class, 'procurarTarefa'])->name('procurarTarefa');
-*/
+Route::get('/adocoesPendentes', [App/Http/Controllers/controladorAdocao::class, 'listarAdocoesPendentes'])->name('adocoesPendentes');
+Route::get('/adocoesConcluidas', [App/Http/Controllers/controladorAdocao::class, 'listarAdocoesConcluidas'])->name('adocoesConcluidas');
+Route::get('/adocoes/novo', [App/Http/Controllers/controladorAdocao::class, 'create'])->name('novaAdocao');
+Route::get('/adocoes', [App/Http/Controllers/controladorAdocao::class, 'store'])->name('gravarNovaAdocao');
+Route::get('adocoes/apagar/{id}', [App/Http/Controllers/controladorAdocao::class, 'destroy'])->name('deletarAdocao');
+Route::get('adocoes/editar/{id}', [App/Http/Controllers/controladorAdocao::class, 'edit'])->name('editarAdocoes');
+Route::get('adocoes/{id}', [App/Http/Controllers/controladorAdocao::class, 'update'])->name('atualizaAdocao');
+Route::get('adocoes/pesquisa', [App/Http/Controllers/controladorAdocao::class, 'pesquisarAdocao'])->name('pesquisarAdocao');
+Route::get('adocoes/procurarAdocao', [App/Http/Controllers/controladorAdocao::class, 'procurarAdocao'])->name('procurarAdocao');

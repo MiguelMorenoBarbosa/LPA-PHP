@@ -11,12 +11,12 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">Tarefas</a>
+                    aria-expanded="false">Adoções</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown10">
-                <a class="dropdown-item" href="{{ route('novaTarefa')}}">Cadastrar Tarefa</a>
-                <a class="dropdown-item" href="{{ route('tarefasPendentes')}}">Listar Tarefas pendentes</a>
-                <a class="dropdown-item" href="{{ route('tarefasConcluidas')}}">Listar Tarefas Realizadas</a>
-                <a class="dropdown-item" href="{{ route('pesquisarTarefa')}}">Pesquisar Tarefas</a>
+                <a class="dropdown-item" href="{{ route('novaAdocao')}}">Cadastrar Adoção</a>
+                <a class="dropdown-item" href="{{ route('adocoesPendentes')}}">Listar Adoções pendentes</a>
+                <a class="dropdown-item" href="{{ route('adocoesConcluidas')}}">Listar Adoções Realizadas</a>
+                <a class="dropdown-item" href="{{ route('pesquisarAdocao')}}">Pesquisar Adoções</a>
                 </div>
             </li>
             <li class="nav-link dropdown">
